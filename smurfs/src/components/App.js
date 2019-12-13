@@ -30,6 +30,7 @@ const App = () => {
 	return (
 		<SmurfContext.Provider value={{ smurfs, setSmurfs, addSmurfs, deleteSmurf }}>
 			<div className="App">
+        <h2>Welcome to the Village</h2>
 				<SmurfList />
 				<SmurfForm />
 			</div>
