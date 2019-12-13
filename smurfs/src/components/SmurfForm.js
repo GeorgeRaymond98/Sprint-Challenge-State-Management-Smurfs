@@ -1,49 +1,52 @@
-import React, {useState, useContext } from 'react';
-import { SmurfContext } from '../contexts/SmurfContexts';
+import React, { useState, useContext } from 'react';
+import { SmurfContext } from '../contexts/SmurfContext';
 
-const SmurfForm = () => {
-    const [ newSmurf, setNewSmurf ] = useState({
-        name:"",
-        age:"",
-        height:""
-    })
-    const {addSmurf} = useContext(SmurfContext);
+const SmurfsForm = () => {
+	const [ newSmurf, setNewSmurf ] = useState({
+		name: '',
+		age: '',
+		height: ''
+	});
+	const { addSmurfs } = useContext(SmurfContext);
 
-    const handleChanges = e => {
-        setNewSmurf({...newSmurf, [e.target.name]: e.target.value});
-    }
-    const handleSubmit = e => {
-        addSmurf(newSmurf);
-    }
-    return (
-        <div className="smurForm">
-            <h2>Smurf it Up!</h2>
-            <form onSubmit={e => handleSubmit(e)} >
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="name"
-                    value={newSmurf.name}
-                    onChange={e => handleChanges(e)}
-                />
-                    <input
-                    type="number"
-                    name="age"
-                    placeholder="age"
-                    value={newSmurf.age}
-                    onChange={e => handleChanges(e)}
-                />
-                <input
-                    type="number"
-                    name="height"
-                    placeholder="height"
-                    value={newSmurf.height}
-                    onChange={e => handleChanges(e)}
-                />
-                <button>Add smurf </button>
-            </form>
-        </div>
-    )
-}
+	const handleChange = e => {
+		setNewSmurf({ ...newSmurf, [e.target.name]: e.target.value });
+	};
 
-export default SmurfForm
+	const handleSubmit = () => {
+		addSmurfs(newSmurf);
+	};
+
+	return (
+		<div className="SmurfForm">
+			<h2>Smurf it up</h2>
+			<form onSubmit={e => handleSubmit(e)}>
+				<input
+					type="text"
+					name="name"
+					placeholder="name"
+					value={newSmurf.name}
+					onChange={e => handleChange(e)}
+				/>
+				<input
+					type="number"
+					name="age"
+					placeholder="age"
+					value={newSmurf.age}
+					onChange={e => handleChange(e)}
+				/>
+				<input
+					type="text"
+					name="height"
+					placeholder="height"
+					value={newSmurf.height}
+					onChange={e => handleChange(e)}
+				/>
+				<button>Add Smurf</button>
+			</form>
+		</div>
+	);
+};
+
+export default SmurfsForm;
+
